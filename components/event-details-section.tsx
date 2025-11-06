@@ -33,7 +33,7 @@ export function EventDetailsSection() {
               <MapPin className="w-6 h-6 text-primary" />
             </div>
             <h3 className="title-subsection mb-2">Lugar</h3>
-            <p className="text-body font-semibold">Quinta La Isidora, por Ruta N°3</p>
+            <p className="text-body font-semibold">Quinta La Isidora - Ruta N°3</p>
           </Card>
         </div>
 
