@@ -174,7 +174,7 @@ useEffect(() => {
           <div className="space-y-8">
             <div className="text-center">
               <h3 className="eyebrow mb-3">DÍA</h3>
-              <p className="text-body">Viernes 15 de Junio - 22:00 hs</p>
+              <p className="text-body">Sabado 6 de Diciembre - 22:00 hs</p>
             </div>
 
             <div className="text-center">
@@ -182,14 +182,16 @@ useEffect(() => {
               <p className="text-body mb-1">{eventLocation}</p>
             </div>
 
-            <div className="text-center">
-              <Button
-                className="mt-4 bg-gradient-to-r from-sky-400 to-slate-400 hover:from-sky-500 hover:to-slate-500 text-white rounded-full px-8 shadow-lg"
-                onClick={() => window.open(googleMapsUrl, "_blank")}
-              >
-                ¿Cómo Llegar?
-              </Button>
-            </div>
+           <div className="text-center">
+  <Button
+    asChild
+    className="mt-4 bg-gradient-to-r from-sky-400 to-slate-400 hover:from-sky-500 hover:to-slate-500 text-white rounded-full px-8 shadow-lg"
+  >
+    <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer">
+      ¿Cómo Llegar?
+    </a>
+  </Button>
+</div>
 
             <div className="text-center pt-8">
               <Button
