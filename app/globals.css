@@ -1,23 +1,28 @@
+/* === Fuentes: deben ir ANTES de todo === */
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap');
+
+/* Tailwind y animaciones */
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* ===== Variantes (Tailwind v4) ===== */
 @custom-variant dark (&:is(.dark *));
 
+/* ===== Tokens de color / radios ===== */
 :root {
-  /* Tema celeste y plateado para invitación de XV años */
   --background: oklch(0.98 0.01 220);
   --foreground: oklch(0.25 0.02 240);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.25 0.02 240);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.25 0.02 240);
-  --primary: oklch(0.65 0.15 220); /* Celeste principal */
+  --primary: oklch(0.65 0.15 220);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.75 0.02 240); /* Plateado */
+  --secondary: oklch(0.75 0.02 240);
   --secondary-foreground: oklch(0.25 0.02 240);
   --muted: oklch(0.95 0.01 220);
   --muted-foreground: oklch(0.55 0.02 240);
-  --accent: oklch(0.85 0.08 220); /* Celeste claro */
+  --accent: oklch(0.85 0.08 220);
   --accent-foreground: oklch(0.25 0.02 240);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
@@ -25,6 +30,8 @@
   --input: oklch(0.92 0.02 220);
   --ring: oklch(0.65 0.15 220);
   --radius: 0.75rem;
+
+  /* opcionales (sidebar/gráficos) */
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -70,10 +77,12 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
+/* ===== Mapeo de theme (Tailwind v4) ===== */
 @theme inline {
   --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback";
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -93,15 +102,18 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -112,41 +124,70 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* ===== Base ===== */
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground; }
+
+  /* Tipografías y escalas (mobile-first) */
+  h1, h2, h3 { @apply font-serif text-center text-balance leading-tight; }
+  h1 { @apply font-bold text-[clamp(36px,10vw,72px)]; }
+  h2 { @apply font-bold text-[clamp(28px,8vw,40px)]; }
+  h3 { @apply font-semibold text-[clamp(22px,6vw,28px)]; }
+  p, li, small { @apply font-sans text-[15px] leading-relaxed md:text-base; }
+
+  /* ===== Normalización fuerte (colores/tipografías) ===== */
+  /* Títulos: Cormorant + color primario en todo el sitio,
+     excepto si usan un gradiente de título (.title-gradient) */
+  :where(h1, h2, h3):not(.title-gradient) {
+    color: var(--color-primary) !important;
+    font-family: "Cormorant Garamond", ui-serif, Georgia, serif !important;
   }
-  body {
-    @apply bg-background text-foreground;
+
+  /* Cuerpo de texto: Montserrat + color base */
+  :where(p, li, small) {
+    color: var(--color-foreground) !important;
+    font-family: "Montserrat", ui-sans-serif, system-ui, sans-serif !important;
   }
+
+  /* Textos secundarios */
+  :where(.subtitle, .eyebrow, .text-muted, .text-muted-foreground) {
+    color: var(--color-muted-foreground) !important;
+  }
+
+  /* Botones y enlaces por defecto con fuente sans */
+  a, button { font-family: "Montserrat", ui-sans-serif, system-ui, sans-serif !important; }
 }
 
-/* Animaciones personalizadas para la invitación */
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
+/* ===== Componentes / Utilidades ===== */
+@layer components {
+  .section { @apply px-4 py-10 md:py-12 text-center; }
+  .section-tight { @apply px-4 py-8 md:py-12 text-center; }
+  .title-gradient { @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent; }
+  .subtitle { @apply text-[15px] md:text-base font-light text-muted-foreground mt-2 mb-6; }
+
+  /* Countdown */
+  .count-num {
+    @apply font-serif font-bold leading-none
+           [font-variant-numeric:tabular-nums]
+           text-[clamp(28px,9vw,36px)] md:text-[42px];
+    color: var(--color-primary) !important;
   }
-  50% {
-    transform: translateY(-10px);
-  }
+  .count-label { @apply mt-1 text-[10px] md:text-xs tracking-widest; color: var(--color-muted-foreground) !important; }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
+/* ===== Sólo para el nombre “Ángeles” ===== */
+.font-angeles {
+  font-family: "Pinyon Script", cursive !important;
+  letter-spacing: .01em;
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
+/* ===== Animaciones ===== */
+@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+@keyframes shimmer { 0% { background-position: -1000px 0; } 100% { background-position: 1000px 0; } }
+.animate-float { animation: float 3s ease-in-out infinite; }
 .animate-shimmer {
   animation: shimmer 3s linear infinite;
-  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,.3) 50%, transparent 100%);
   background-size: 1000px 100%;
 }

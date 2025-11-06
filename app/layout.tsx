@@ -1,40 +1,36 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Cormorant_Garamond, Montserrat } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-serif",
-  display: "swap",
-})
+import "./globals.css";
+import type { Metadata } from "next";
+import { Montserrat, Cormorant_Garamond, Pinyon_Script } from "next/font/google";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "600"],
   variable: "--font-sans",
   display: "swap",
-})
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const pinyon = Pinyon_Script({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-angeles",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Mis XV Años - Angeles",
-  description: "Te invito a celebrar mis XV años",
-  generator: "v0.app",
-}
+  title: "Invitación XV — Ángeles",
+};
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es">
-      <body className={`${montserrat.variable} ${cormorant.variable} font-sans antialiased`}>
-        {children}
-        <Analytics />
-      </body>
+    <html lang="es" className={`${montserrat.variable} ${cormorant.variable} ${pinyon.variable}`}>
+      <body>{children}</body>
     </html>
-  )
+  );
 }

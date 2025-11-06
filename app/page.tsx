@@ -120,7 +120,7 @@ export default function InvitationPage() {
             <div className="absolute inset-0 bg-gradient-to-br from-sky-300/30 to-slate-300/30 rounded-full blur-2xl" />
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-sky-300/50 shadow-2xl bg-gradient-to-br from-sky-100 to-slate-100">
               <img
-                src="/1.jpg"
+                src="/portada.jpeg"
                 alt="Quinceañera"
                 className="w-full h-full object-cover"
               />
