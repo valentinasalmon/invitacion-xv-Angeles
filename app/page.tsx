@@ -79,7 +79,7 @@ useEffect(() => {
 
   const whatsappNumber = "5493794999546"
   const whatsappMessage = "Hola! Confirmo mi asistencia a los XV años de Angeles, mi nombre es ..."
-  const eventLocation = "Quinta La Isidora, por Ruta N°3"
+  const eventLocation = "Quinta La Isidora - Ruta N°3"
   const googleMapsUrl = "https://maps.app.goo.gl/wHcSHqqrg59XVxUg9"
 
   return (
