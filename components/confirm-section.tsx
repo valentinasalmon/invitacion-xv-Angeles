@@ -2,17 +2,16 @@ import { MessageCircle, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function ConfirmSection() {
-  // Cambia este número por el número de WhatsApp real (con código de país, sin +)
-  const whatsappNumber = "5493794338190"
+  const whatsappNumber = "5493794999546"
   const message = encodeURIComponent("¡Hola! Confirmo mi asistencia a los XV años de Angeles 🎉, mi nombre es ..")
 
   return (
-    <section className="py-20 px-4">
+    <section className="section">
       <div className="max-w-4xl mx-auto text-center">
         <div className="mb-8">
           <Heart className="w-16 h-16 text-primary mx-auto mb-6 animate-pulse" />
-          <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4 text-balance">¡Confirmá tu Asistencia!</h2>
-          <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
+          <h2 className="title-section mb-4">¡Confirmá tu Asistencia!</h2>
+          <p className="subtitle max-w-2xl mx-auto">
             Tu presencia es muy importante para mí. Por favor, confirmá tu asistencia antes del 20 de Noviembre
           </p>
         </div>
@@ -25,7 +24,7 @@ export function ConfirmSection() {
         </Button>
 
         <div className="mt-16 pt-8 border-t border-border">
-          <p className="text-sm text-muted-foreground">¡Espero verte en mi fiesta! 💙✨</p>
+          <p className="text-small text-muted-foreground">¡Espero verte en mi fiesta! 💙✨</p>
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 /* === Fuentes: deben ir ANTES de todo === */
-@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap");
 
 /* Tailwind y animaciones */
 @import "tailwindcss";
@@ -126,68 +126,145 @@
 
 /* ===== Base ===== */
 @layer base {
-  * { @apply border-border outline-ring/50; }
-  body { @apply bg-background text-foreground; }
-
-  /* Tipografías y escalas (mobile-first) */
-  h1, h2, h3 { @apply font-serif text-center text-balance leading-tight; }
-  h1 { @apply font-bold text-[clamp(36px,10vw,72px)]; }
-  h2 { @apply font-bold text-[clamp(28px,8vw,40px)]; }
-  h3 { @apply font-semibold text-[clamp(22px,6vw,28px)]; }
-  p, li, small { @apply font-sans text-[15px] leading-relaxed md:text-base; }
-
-  /* ===== Normalización fuerte (colores/tipografías) ===== */
-  /* Títulos: Cormorant + color primario en todo el sitio,
-     excepto si usan un gradiente de título (.title-gradient) */
-  :where(h1, h2, h3):not(.title-gradient) {
-    color: var(--color-primary) !important;
-    font-family: "Cormorant Garamond", ui-serif, Georgia, serif !important;
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
   }
 
-  /* Cuerpo de texto: Montserrat + color base */
-  :where(p, li, small) {
-    color: var(--color-foreground) !important;
-    font-family: "Montserrat", ui-sans-serif, system-ui, sans-serif !important;
+  /* Tipografía estandarizada y coherente */
+  /* Títulos principales - Cormorant Garamond */
+  h1 {
+    @apply font-serif font-bold text-center text-balance leading-tight;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
   }
 
-  /* Textos secundarios */
-  :where(.subtitle, .eyebrow, .text-muted, .text-muted-foreground) {
-    color: var(--color-muted-foreground) !important;
+  h2 {
+    @apply font-serif font-bold text-center text-balance leading-tight;
+    font-size: clamp(2rem, 6vw, 3rem);
   }
 
-  /* Botones y enlaces por defecto con fuente sans */
-  a, button { font-family: "Montserrat", ui-sans-serif, system-ui, sans-serif !important; }
+  h3 {
+    @apply font-serif font-semibold text-center text-balance leading-tight;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  /* Texto de cuerpo - Montserrat */
+  p {
+    @apply font-sans leading-relaxed;
+    font-size: 1rem;
+  }
+
+  li,
+  small {
+    @apply font-sans leading-relaxed;
+    font-size: 0.875rem;
+  }
+
+  /* Botones y enlaces */
+  button,
+  a {
+    @apply font-sans font-medium;
+  }
 }
 
 /* ===== Componentes / Utilidades ===== */
 @layer components {
-  .section { @apply px-4 py-10 md:py-12 text-center; }
-  .section-tight { @apply px-4 py-8 md:py-12 text-center; }
-  .title-gradient { @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent; }
-  .subtitle { @apply text-[15px] md:text-base font-light text-muted-foreground mt-2 mb-6; }
-
-  /* Countdown */
-  .count-num {
-    @apply font-serif font-bold leading-none
-           [font-variant-numeric:tabular-nums]
-           text-[clamp(28px,9vw,36px)] md:text-[42px];
-    color: var(--color-primary) !important;
+  /* Reduciendo el padding vertical de las secciones */
+  .section {
+    @apply px-4 py-12 text-center;
   }
-  .count-label { @apply mt-1 text-[10px] md:text-xs tracking-widest; color: var(--color-muted-foreground) !important; }
+  .section-tight {
+    @apply px-4 py-8 text-center;
+  }
+
+  /* Clases de título consistentes */
+  .title-main {
+    @apply font-serif font-bold text-center text-balance leading-tight;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+  }
+
+  .title-section {
+    @apply font-serif font-bold text-center text-balance leading-tight;
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .title-subsection {
+    @apply font-serif font-semibold text-center text-balance leading-tight;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .title-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-serif font-bold text-center;
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  /* Texto de cuerpo */
+  .text-body {
+    @apply font-sans leading-relaxed;
+    font-size: 1rem;
+  }
+
+  .text-small {
+    @apply font-sans leading-relaxed;
+    font-size: 0.875rem;
+  }
+
+  .subtitle {
+    @apply font-sans font-light text-muted-foreground leading-relaxed;
+    font-size: 1rem;
+  }
+
+  .eyebrow {
+    @apply font-sans font-semibold uppercase tracking-widest text-muted-foreground;
+    font-size: 0.75rem;
+  }
+
+  /* Countdown específico */
+  .count-num {
+    @apply font-serif font-bold leading-none text-primary;
+    font-size: clamp(2rem, 7vw, 3rem);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .count-label {
+    @apply font-sans font-semibold uppercase tracking-widest text-muted-foreground;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
 }
 
-/* ===== Sólo para el nombre “Ángeles” ===== */
+/* ===== Sólo para el nombre "Ángeles" ===== */
 .font-angeles {
   font-family: "Pinyon Script", cursive !important;
-  letter-spacing: .01em;
+  letter-spacing: 0.01em;
+  font-size: clamp(3.5rem, 10vw, 6rem) !important;
 }
 
 /* ===== Animaciones ===== */
-@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-@keyframes shimmer { 0% { background-position: -1000px 0; } 100% { background-position: 1000px 0; } }
-.animate-float { animation: float 3s ease-in-out infinite; }
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
 .animate-shimmer {
   animation: shimmer 3s linear infinite;
-  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,.3) 50%, transparent 100%);
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
   background-size: 1000px 100%;
 }

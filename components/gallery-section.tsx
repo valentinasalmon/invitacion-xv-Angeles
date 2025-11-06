@@ -7,9 +7,9 @@ export function GallerySection() {
   ]
 
   return (
-    <section className="py-16 px-4">
+    <section className="section">
       <div className="max-w-6xl mx-auto">
-        <h2 className="font-serif text-3xl md:text-4xl font-bold text-center mb-12 text-balance">Mis mejores momentos</h2>
+        <h2 className="title-section mb-12">Mis mejores momentos</h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {images.map((image) => (

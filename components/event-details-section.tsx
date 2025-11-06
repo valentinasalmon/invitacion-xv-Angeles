@@ -4,38 +4,36 @@ import { Button } from "@/components/ui/button"
 
 export function EventDetailsSection() {
   return (
-    <section className="py-16 px-4 bg-accent/10">
+    <section className="section bg-accent/10">
       <div className="max-w-4xl mx-auto">
-        <h2 className="font-serif text-3xl md:text-4xl font-bold text-center mb-12 text-balance">
-          Detalles del Evento
-        </h2>
+        <h2 className="title-section mb-12">Detalles del Evento</h2>
 
         <div className="grid md:grid-cols-3 gap-6">
           <Card className="p-6 text-center bg-card/80 backdrop-blur border-primary/20">
             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
               <Calendar className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="font-serif text-xl font-semibold mb-2">Fecha</h3>
-            <p className="text-muted-foreground">Sábado</p>
-            <p className="text-lg font-semibold">6 de Diciembre</p>
-            <p className="text-muted-foreground">2025</p>
+            <h3 className="title-subsection mb-2">Fecha</h3>
+            <p className="text-body text-muted-foreground">Sábado</p>
+            <p className="text-body font-semibold">6 de Diciembre</p>
+            <p className="text-body text-muted-foreground">2025</p>
           </Card>
 
           <Card className="p-6 text-center bg-card/80 backdrop-blur border-primary/20">
             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
               <Clock className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="font-serif text-xl font-semibold mb-2">Horario</h3>
-            <p className="text-lg font-semibold">22:00 hs</p>
-            <p className="text-muted-foreground text-sm mt-2">Recepción y cena</p>
+            <h3 className="title-subsection mb-2">Horario</h3>
+            <p className="text-body font-semibold">22:00 hs</p>
+            <p className="text-small text-muted-foreground mt-2">Recepción y cena</p>
           </Card>
 
           <Card className="p-6 text-center bg-card/80 backdrop-blur border-primary/20">
             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
               <MapPin className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="font-serif text-xl font-semibold mb-2">Lugar</h3>
-            <p className="text-lg font-semibold">Quinta La Isidora, por Ruta N°3</p>
+            <h3 className="title-subsection mb-2">Lugar</h3>
+            <p className="text-body font-semibold">Quinta La Isidora, por Ruta N°3</p>
           </Card>
         </div>
 

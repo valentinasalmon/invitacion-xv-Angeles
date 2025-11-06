@@ -1,5 +1,4 @@
-import { Shirt } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { Shirt } from "lucide-react"
 
 export function DressCodeSection() {
   return (
@@ -9,15 +8,10 @@ export function DressCodeSection() {
           <Shirt className="w-9 h-9 text-white" strokeWidth={1.5} />
         </div>
 
-        <h2 className="title-gradient mb-2">Dress Code</h2>
+        <h2 className="title-gradient mb-6">Dress Code</h2>
 
-        <Card className="mx-auto max-w-md p-6 bg-card/80 backdrop-blur border-primary/20">
-          <p className="font-sans text-xl md:text-2xl font-semibold text-foreground">
-            Elegante
-          </p>
-
-        </Card>
+        <p className="subtitle">Elegante</p>
       </div>
     </section>
-  );
+  )
 }
