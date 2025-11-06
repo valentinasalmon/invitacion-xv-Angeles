@@ -54,7 +54,7 @@ useEffect(() => {
       if (isPlaying) {
         audioRef.current.pause()
       } else {
-        audioRef.current.currentTime = 0.05 
+        audioRef.current.currentTime = 6
         audioRef.current.play()
       }
       setIsPlaying(!isPlaying)
